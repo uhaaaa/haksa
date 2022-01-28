@@ -14,24 +14,24 @@ public class Student extends JPanel{
 	JTextField txtDepartment = null;
 	JTextField txtAdd = null;
 	
-	JButton btnInsert = null; //µî·Ï
-	JButton btnSelect = null; //¸ñ·Ï
-	JButton btnUpdate = null; //¼öÁ¤
-	JButton btnDelete = null; //»èÁ¦
+	JButton btnInsert = null; //ë“±ë¡
+	JButton btnSelect = null; //ëª©ë¡
+	JButton btnUpdate = null; //ìˆ˜ì •
+	JButton btnDelete = null; //ì‚­ì œ
 	
 	JButton btnSearch = null;
 	
-	DefaultTableModel model=null; //Å×ÀÌºíÀÇ µ¥ÀÌÅÍ ´ã´ç
+	DefaultTableModel model=null; //í…Œì´ë¸”ì˜ ë°ì´í„° ë‹´ë‹¹
 	JTable table=null;
 	
 	public Student() {
 		
 		this.setLayout(new FlowLayout()); 
 		
-		this.add(new JLabel("ÇĞ¹ø"));
+		this.add(new JLabel("í•™ë²ˆ"));
 		this.txtId = new JTextField(14);
 		this.add(txtId);
-		this.btnSearch = new JButton("°Ë»ö");
+		this.btnSearch = new JButton("ê²€ìƒ‰");
 		this.add(btnSearch);
 		this.btnSearch.addActionListener(new ActionListener() {
 
@@ -40,7 +40,7 @@ public class Student extends JPanel{
 				try {
 					Class.forName("oracle.jdbc.driver.OracleDriver");
 					Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "SCOTT", "TIGER");
-					System.out.println("¿¬°áµÊ");
+					System.out.println("ì—°ê²°ë¨");
 					
 					Statement stmt = conn.createStatement();
 					
@@ -70,21 +70,21 @@ public class Student extends JPanel{
 			}
 		});
 		
-		this.add(new JLabel("ÀÌ¸§"));
+		this.add(new JLabel("ì´ë¦„"));
 		this.txtName = new JTextField(20);
 		this.add(txtName);
 		
-		this.add(new JLabel("ÇĞ°ú"));
+		this.add(new JLabel("í•™ê³¼"));
 		this.txtDepartment = new JTextField(20);
 		this.add(txtDepartment);
 		
-		this.add(new JLabel("ÁÖ¼Ò"));
+		this.add(new JLabel("ì£¼ì†Œ"));
 		this.txtAdd = new JTextField(20);
 		this.add(txtAdd);
 		
-		String[] colname = {"ÇĞ¹ø", "ÀÌ¸§", "ÇĞ°ú", "ÁÖ¼Ò"};
+		String[] colname = {"í•™ë²ˆ", "ì´ë¦„", "í•™ê³¼", "ì£¼ì†Œ"};
 		this.model = new DefaultTableModel(colname, 0);
-		this.table = new JTable(model);// model°ú tableÀÌ ¼­·Î ¹ÙÀÎµù, ¿¬µ¿
+		this.table = new JTable(model);// modelê³¼ tableì´ ì„œë¡œ ë°”ì¸ë”©, ì—°ë™
 		this.table.setPreferredScrollableViewportSize(new Dimension(250,270));
 		this.add(this.table);
 		JScrollPane sp=new JScrollPane(this.table);
@@ -116,7 +116,7 @@ public class Student extends JPanel{
 		
 		});
 		
-		this.btnInsert = new JButton("µî·Ï");
+		this.btnInsert = new JButton("ë“±ë¡");
 		this.add(btnInsert);
 		this.btnInsert.addActionListener(new ActionListener() {
 
@@ -124,26 +124,26 @@ public class Student extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 				
 				if(txtId.getText().equals("")) {
-					JOptionPane.showMessageDialog(null, "ÇĞ¹øÀÌ ÀÔ·ÂµÇÁö ¾Ê¾Ò½À´Ï´Ù.", "°æ°í", JOptionPane.WARNING_MESSAGE);
+					JOptionPane.showMessageDialog(null, "í•™ë²ˆì´ ì…ë ¥ë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤.", "ê²½ê³ ", JOptionPane.WARNING_MESSAGE);
 					return;
 				} else if(txtName.getText().equals("")) {
-					JOptionPane.showMessageDialog(null, "ÀÌ¸§ÀÌ ÀÔ·ÂµÇÁö ¾Ê¾Ò½À´Ï´Ù.", "°æ°í", JOptionPane.WARNING_MESSAGE);
+					JOptionPane.showMessageDialog(null, "ì´ë¦„ì´ ì…ë ¥ë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤.", "ê²½ê³ ", JOptionPane.WARNING_MESSAGE);
 					return;
 				} else if(txtDepartment.getText().equals("")) {
-					JOptionPane.showMessageDialog(null, "ÇĞ°ú°¡ ÀÔ·ÂµÇÁö ¾Ê¾Ò½À´Ï´Ù.", "°æ°í", JOptionPane.WARNING_MESSAGE);
+					JOptionPane.showMessageDialog(null, "í•™ê³¼ê°€ ì…ë ¥ë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤.", "ê²½ê³ ", JOptionPane.WARNING_MESSAGE);
 					return;
 				} else if(txtAdd.getText().equals("")) {
-					JOptionPane.showMessageDialog(null, "ÁÖ¼Ò°¡ ÀÔ·ÂµÇÁö ¾Ê¾Ò½À´Ï´Ù.", "°æ°í", JOptionPane.WARNING_MESSAGE);
+					JOptionPane.showMessageDialog(null, "ì£¼ì†Œê°€ ì…ë ¥ë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤.", "ê²½ê³ ", JOptionPane.WARNING_MESSAGE);
 					return;
 				} else {
-					JOptionPane.showMessageDialog(null, "µî·ÏµÇ¾ú½À´Ï´Ù.", "¾Ë¸²", JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(null, "ë“±ë¡ë˜ì—ˆìŠµë‹ˆë‹¤.", "ì•Œë¦¼", JOptionPane.INFORMATION_MESSAGE);
 				}
 				
-				System.out.println("µî·Ï");
+				System.out.println("ë“±ë¡");
 				try {
 					Class.forName("oracle.jdbc.driver.OracleDriver");
 					Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "SCOTT", "TIGER");
-					System.out.println("¿¬°áµÊ");
+					System.out.println("ì—°ê²°ë¨");
 					
 					Statement stmt = conn.createStatement();
 					
@@ -170,7 +170,7 @@ public class Student extends JPanel{
 			}
 		});
 		
-		this.btnSelect = new JButton("¸ñ·Ï");
+		this.btnSelect = new JButton("ëª©ë¡");
 		this.add(btnSelect);
 		this.btnSelect.addActionListener(new ActionListener() {
 
@@ -179,7 +179,7 @@ public class Student extends JPanel{
 				try {
 					Class.forName("oracle.jdbc.driver.OracleDriver");
 					Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "SCOTT", "TIGER");
-					System.out.println("¿¬°áµÊ");
+					System.out.println("ì—°ê²°ë¨");
 					
 					Statement stmt = conn.createStatement();
 					
@@ -203,7 +203,7 @@ public class Student extends JPanel{
 			}
 		});
 		
-		this.btnUpdate = new JButton("¼öÁ¤");
+		this.btnUpdate = new JButton("ìˆ˜ì •");
 		this.add(btnUpdate);
 		this.btnUpdate.addActionListener(new ActionListener() {
 
@@ -212,7 +212,7 @@ public class Student extends JPanel{
 				try {
 					Class.forName("oracle.jdbc.driver.OracleDriver");
 					Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "SCOTT", "TIGER");
-					System.out.println("¿¬°áµÊ");
+					System.out.println("ì—°ê²°ë¨");
 					
 					Statement stmt = conn.createStatement();
 					
@@ -236,21 +236,23 @@ public class Student extends JPanel{
 					} catch (Exception e1) {
 						e1.printStackTrace();
 				} finally {}
+				// ìˆ˜ì • í›„ ë©”ì„¸ì§€ ì¶œë ¥
+				JOptionPane.showInternalMessageDialog(null, "ë˜ì—ˆìŠµë‹ˆë‹¤.", "message", JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
 		
-		this.btnDelete = new JButton("»èÁ¦");
+		this.btnDelete = new JButton("ì‚­ì œ");
 		this.btnDelete.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				int result = JOptionPane.showConfirmDialog(null, "»èÁ¦ÇÏ½Ã°Ú½À´Ï±î?", "confirm", JOptionPane.YES_NO_OPTION);
+				int result = JOptionPane.showConfirmDialog(null, "ì‚­ì œí•˜ì‹œê² ìŠµë‹ˆê¹Œ?", "confirm", JOptionPane.YES_NO_OPTION);
 				if(result ==JOptionPane.YES_OPTION) {
-					// ¿À¶óÅ¬ ¿¬µ¿ »èÁ¦(delete)Ã³¸®
+					// ì˜¤ë¼í´ ì—°ë™ ì‚­ì œ(delete)ì²˜ë¦¬
 					try {
 						Class.forName("oracle.jdbc.driver.OracleDriver");
 						Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "SCOTT", "TIGER");
-						System.out.println("¿¬°áµÊ");
+						System.out.println("ì—°ê²°ë¨");
 						
 						Statement stmt = conn.createStatement();
 						
@@ -281,8 +283,8 @@ public class Student extends JPanel{
 					} finally {
 						
 					}
-					// »èÁ¦ ÈÄ ¸Ş¼¼Áö Ãâ·Â
-					JOptionPane.showInternalMessageDialog(null, "»èÁ¦µÇ¾ú½À´Ï´Ù.", "message", JOptionPane.INFORMATION_MESSAGE);
+					// ì‚­ì œ í›„ ë©”ì„¸ì§€ ì¶œë ¥
+					JOptionPane.showInternalMessageDialog(null, "ì‚­ì œë˜ì—ˆìŠµë‹ˆë‹¤.", "message", JOptionPane.INFORMATION_MESSAGE);
 				} 
 			}
 			
